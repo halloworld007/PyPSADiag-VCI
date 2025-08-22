@@ -53,11 +53,11 @@ contribute to the project, like:
 Build
 -----
 - Install Python 3.12 or above
-- Get code `git clone https://github.com/Barracuda09/PyPSADiag.git`<br>
-  OR use this [Download ZIP](https://github.com/Barracuda09/PyPSADiag/archive/refs/heads/main.zip)
-- Create virtual enviroment `python -m venv /path/to/PyPSADiag/.venv`
-- Goto virtual enviroment with `/path/to/PyPSADiag/.venv/Script/activate`
-- Install requirements, within path of PyPSADiag with `pip install -r requirements.txt`
+- Get code `git clone https://github.com/halloworld007/PyPSADiag-VCI.git`<br>
+  OR use this [Download ZIP](https://github.com/halloworld007/PyPSADiag-VCI/archive/refs/heads/main.zip)
+- Create virtual enviroment `python -m venv /path/to/PyPSADiag-VCI/.venv`
+- Goto virtual enviroment with `/path/to/PyPSADiag-VCI/.venv/Script/activate`
+- Install requirements, within path of PyPSADiag-VCI with `pip install -r requirements.txt`
 - Run with:
 	1. `python main.py --lang nl`
 	2. `Open Zone File` and select an ECU JSON file

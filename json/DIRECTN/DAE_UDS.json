@@ -1,0 +1,169 @@
+{
+  "name": "DAE UDS",
+  "tx_id": "6B5",
+  "rx_id": "695",
+  "protocol": "uds",
+  "key_type": "multi",
+  "keys": {
+    "key1": "2105",
+    "key2": "2707"
+  },
+  "coding": true,
+  "errors": true,
+  "include_zone_object": "./data/IdentUDSECU.json",
+  "tabs": {
+    "ident": "Identification",
+    "tele": "Telecoding"
+  },
+  "zones": {
+     "2100": {
+      "id": "Configuration_Group_Data_List",
+      "tab": "tele",
+      "name": "Configuration group data list",
+      "byte": 0,
+      "type": "raw",
+      "form_type": "string"
+    },
+    "2101": {
+      "id": "Gauging_Group_Data_Values",
+      "name": "Gauging group data values",
+      "tab": "tele",
+      "type": "raw",
+      "form_type": "multi",
+      "CONFIG_INDICE_TELECODAGE": {
+        "name": "CONFIG_INDICE_TELECODAGE",
+        "byte": 0,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11111111",
+        "params": [
+          {
+            "name": "CONFIG_INDICE_TELECODAGE_01",
+            "mask": "00000001"
+          },
+          {
+            "name": "CONFIG_INDICE_TELECODAGE_03",
+            "mask": "00000011"
+          }
+        ]
+      },
+      "CFG_EP0_DAE_UDS_LXA_003": {
+        "name": "Full lane keeping assistance function",
+        "byte": 1,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00100000",
+        "params": [
+          {
+            "name": "With lane keeping assistance function",
+            "mask": "00000000"
+          },
+          {
+            "name": "Without lane keeping assistance function",
+            "mask": "00100000"
+          }
+        ]
+      },
+      "CFG_EP1_DAE_UDS_MODE_DYN_003": {
+        "name": "Dynamic driving function",
+        "byte": 1,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00010000",
+        "params": [
+          {
+            "name": "With dynamic driving function",
+            "mask": "00000000"
+          },
+          {
+            "name": "Without dynamic driving function",
+            "mask": "00010000"
+          }
+        ]
+      },
+      "CFG_EP2_DAE_UDS_STTD_003": {
+        "name": "Stop and Start",
+        "byte": 1,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00000100",
+        "params": [
+          {
+            "name": "With Stop and Start",
+            "mask": "00000000"
+          },
+          {
+            "name": "Without Stop and Start",
+            "mask": "00000100"
+          }
+        ]
+      },
+      "CFG_EP3_DAE_UDS_CPK_003": {
+        "name": "Semi-automatic parking system",
+        "byte": 1,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00000001",
+        "params": [
+          {
+            "name": "With semi-automatic parking system",
+            "mask": "00000000"
+          },
+          {
+            "name": "Without semi-automatic parking system",
+            "mask": "00000001"
+          }
+        ]
+      },
+      "CFG_EP4_DAE_UDS_CAV_003": {
+        "name": "Type of steering wheel angle sensor",
+        "byte": 2,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11111111",
+        "params": [
+          {
+            "name": "Without steering wheel angle sensor",
+            "mask": "11111110"
+          },
+          {
+            "name": "Without steering wheel angle sensor",
+            "mask": "11111101"
+          },
+          {
+            "name": "With steering wheel angle sensor",
+            "mask": "11111011"
+          },
+          {
+            "name": "With virtual steering wheel angle sensor",
+            "mask": "11110111"
+          }
+        ]
+      },
+      "CFG_EP8_DAE_UDS_DPPR_003": {
+        "name": "Type of tyre",
+        "byte": 11,
+        "form_type": "combobox",
+        "mask": "11111111",
+        "params": [
+          {
+            "name": "15 inches",
+            "mask": "11111110"
+          },
+          {
+            "name": "16 inches",
+            "mask": "11111101"
+          },
+          {
+            "name": "17 inches",
+            "mask": "11111011"
+          },
+          {
+            "name": "18 inches",
+            "mask": "11110111"
+          }
+        ]
+      }
+    }
+  }
+}

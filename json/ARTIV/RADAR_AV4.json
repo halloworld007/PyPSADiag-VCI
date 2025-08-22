@@ -1,0 +1,49 @@
+{
+  "name": "RADAR_AV4",
+  "tx_id": "6B6",
+  "rx_id": "696",
+  "protocol": "uds",
+  "key_type": "single",
+  "keys": "EFCA",
+  "coding": true,
+  "errors": true,
+  "include_zone_object": "./data/IdentUDSECU.json",
+  "tabs": {
+    "ident": "Identification",
+    "tele": "Telecoding"
+  },
+  "zones": {
+    "2100": {
+      "id": "Configuration_Group_Data_List",
+      "tab": "tele",
+      "name": "Configuration group data list",
+      "byte": 0,
+      "type": "raw",
+      "form_type": "string"
+    },
+    "2101": {
+      "id": "Gauging_Group_Data_Values",
+      "name": "Gauging group data values",
+      "tab": "tele",
+      "type": "raw",
+      "form_type": "multi",
+      "CFG_E8Z_RADAR_AAC": {
+        "name": "Type of speed regulator",
+        "byte": 1,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11111111",
+        "params": [
+          {
+            "name": "ACC Stop&Go",
+            "mask": "11110111"
+          },
+          {
+            "name": "Without ACC",
+            "mask": "11111110"
+          }
+        ]
+      }
+    }
+  }
+}

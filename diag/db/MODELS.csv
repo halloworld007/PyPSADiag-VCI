@@ -1,0 +1,120 @@
+0,A31,Citroen,C3 Restyling,LEX
+0,A42,Citroen,C3 Pluriel,LEX
+0,A42CAN,Citroen,C3 Pluriel,LEX
+13,A51,Citroen,C3 I,CAN_PSA
+60,A55,Citroen,DS3,CAN_PSA
+34,A55P,DS,3 (A55P),UDS_PSA
+22,A58,Citroen,C3 Picasso,CAN_PSA
+0,A6,Citroen,C2,LEX
+0,A6CAN,Citroen,C2,LEX
+65,A7,Peugeot,207,CAN_PSA
+0,A8,Citroen,C3,LEX
+3,A88,Citroen,C3 Aircross,UDS_PSA
+15,A88C,Citroen,C3 Aircross China,UDS_PSA
+66,A9,Peugeot,208 I,UDS_PSA
+66,A9,Peugeot,2008 (A94),UDS_PSA
+2,B0,Citroen,C1 I,NONE
+2,B0,Peugeot,107 I,NONE
+64,B3_B4,Citroen,C1 (B4),NONE
+64,B3_B4,Peugeot,107 (B4),NONE
+40,B5,Citroen,C4 I,CAN_PSA
+33,B53,Citroen,C4 Sedan,CAN_PSA
+27,B58,Citroen,C4 Picasso I,CAN_PSA
+14,B6,Citroen,C3 (2016+),UDS_PSA
+47,B7,Citroen,C4 II,UDS_PSA
+63,B75C,Citroen,DS 5LS,UDS_PSA
+63,B75C,Citroen,DS 6,UDS_PSA
+11,B78,Citroen,C4 Picasso II,UDS_PSA
+58,B8,Citroen,DS5,UDS_PSA
+45,B9,Peugeot,Partner II,CAN_PSA
+45,B9,Citroen,Berlingo II,CAN_PSA
+0,,Citroen,Berlingo,LEX
+23,C84C,Citroen,C5 Aircross,UDS_PSA
+57,CP4,Citroen,C4 C41,UDS_PSA
+25,D2,Peugeot,407,CAN_PSA
+48,D34,,,UDS_PSA
+59,DIAG_PR,,,NONE
+21,DPE,Citroen,C5X,UDS_PSA_NEA
+21,DPE,DS,DS4,UDS_PSA_NEA
+21,DPE,Peugeot,308 2022+,UDS_PSA_NEA
+62,E3,Citroen,Cactus I,UDS_PSA
+38,G25,Fengsheng,L60,UDS_PSA
+17,G9,Peugeot,Expert III,CAN_PSA
+17,G9,Citroen,Jumpy III,CAN_PSA
+36,G95,Fengsheng,A9,UDS_PSA
+7,I3_I4,Citroen,C-Crosser,CAN_MMC
+7,I3_I4,Peugeot,4007,CAN_MMC
+7,I3_I4,Mitsubishi,Outlander I,CAN_MMC
+54,J3_J4,Peugeot,4008,CAN_MMC
+54,J3_J4,Citroen,C4 Aircross I,CAN_MMC
+54,J3_J4,Mitsubishi,ASX,CAN_MMC
+43,K0,Citroen,Jumpy IV,UDS_PSA
+43,K0,Peugeot,Expert IV,UDS_PSA
+43,K0,Toyota,ProAce IV,UDS_PSA
+43,K0,Vauxhall,Vivaro 2018+,UDS_PSA
+43,K0,Vauxhall,Zafira Vivaro Life,UDS_PSA
+29,K9,Citroen,Berlingo III 2018+,UDS_PSA
+29,K9,Peugeot,Partner III 2018+,UDS_PSA
+29,K9,Vauxhall,Combo 2018+,UDS_PSA
+29,K9,Peugeot,Rifter,UDS_PSA
+29,K9,Toyota,ProAce City,UDS_PSA
+46,KP0,Peugeot,KP0,UDS_PSA
+51,KP1,Kaicene,F70,UDS_PSA
+51,KP1,Peugeot,Landtrek,UDS_CQCA
+4,LA,Citroen,C3 Picasso II (Ai58),CAN_PSA
+4,LA,Citroen,C3 II (Ai51),CAN_PSA
+4,LA,Citroen,C3 Aircross II (Ai58),CAN_PSA
+49,M3_M4,Peugeot,301,UDS_PSA
+49,M3_M4,Citroen,C-Elysee,UDS_PSA
+28,M59,Peugeot,Partner IRAN,VAN_PSA
+28,M59,Citroen,Berlingo IRAN,VAN_PSA
+16,M69,Peugeot,Partner I (S America),CAN_PSA
+16,M69,Citroen,Berlingo I (S America),CAN_PSA
+53,MCV,Peugeot,Bipper,UDS_FIAT
+53,MCV,Citroen,Nemo,UDS_FIAT
+53,MCV,Fiat,Qubo,UDS_FIAT
+0,N6,Citroen,Xsara I,LEX
+0,N68,Citroen,Xsara Picasso,LEX
+0,N7,Citroen,Xsara II,LEX
+19,O2C,Citroen,AMI,UDS_VE
+61,P2,Peugeot,208 (2019+),UDS_PSA
+61,P2,Peugeot,2008 (2019+),UDS_PSA
+10,P2JO,Vauxhall,Corsa (2019+),UDS_PSA
+10,P2JO,Vauxhall,Mokka (2019+),UDS_PSA
+8,P8,Peugeot,3008 II,UDS_PSA
+8,P8,Peugeot,5008 II,UDS_PSA
+42,R8,Peugeot,508 II (2019+),UDS_PSA
+18,S3_S4,Peugeot,iOn,CAN_MMC
+18,S3_S4,Citroen,C-ZERO,CAN_MMC
+41,T3,Peugeot,206,VAN_PSA
+9,T6,Peugeot,307,CAN_PSA
+12,T7,Peugeot,308 I (2007-2013),CAN_PSA
+12,T7,Peugeot,408,CAN_PSA
+12,T7,Peugeot,RC Z (T75),CAN_PSA
+56,T84,Peugeot,3008 I,CAN_PSA
+24,T87,Peugeot,5008 I,CAN_PSA
+20,T9,Peugeot,308 II (2013 on),UDS_PSA
+20,T9,Peugeot,408 II (T93),UDS_PSA
+32,TX9,Peugeot,308 China,UDS_PSA
+0,V,Citroen,C8 (VAN),LEX
+31,VCAN,Peugeot,807,CAN_PSA
+31,VCAN,Citroen,C8,CAN_PSA
+67,VEH_VIN,,,
+39,W2,Peugeot,508,UDS_PSA
+1,X250,Peugeot,Boxer X250,UDS_FIAT
+1,X250,Citroen,Relay X250,UDS_FIAT
+1,X250,Fiat,Ducato X250,UDS_FIAT
+50,X250_MINIBUS,Peugeot,Boxer Minibus,CAN_FIAT_2
+50,X250_MINIBUS,Citroen,Relay Minibus,CAN_FIAT_2
+37,X250FL,Peugeot,Boxer X290,UDS_FIAT
+37,X250FL,Citroen,Relay X290,UDS_FIAT
+37,X250FL,Fiat,Ducato X290,UDS_FIAT
+0,X3,Citroen,C5 I,LEX
+0,X4,Citroen,C5 II,LEX
+44,X6,Citroen,C6,CAN_PSA
+30,X7,Citroen,C5 III,CAN_PSA
+26,X74,DS,7 Crossback,UDS_PSA
+6,X7RR,Citroen,C5 China 2014+ (X7R),UDS_PSA
+52,X8,Citroen,C6 China X81,UDS_PSA
+68,X83,DS,9 E-Tense,UDS_PSA
+5,Z9,Peugeot,607,CAN_PSA

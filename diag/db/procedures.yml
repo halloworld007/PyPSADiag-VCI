@@ -1,0 +1,234 @@
+
+x7_suspension_ecotech_depressurise:
+    vehicle: X7
+    ecuname: SUSPENSION_ECOTECH
+    label:
+        en: "Depressurisation"
+        fr: "Horspression"
+    help:
+        en: "Depressurise the suspension circuit for maintenance or in preparation for checking the level"
+    steps:
+        start:
+            category: entry
+            label:
+                en: "Initialise the procedure and wait for up to 3 minutes, then disconnect the battery"
+            next_step: in_progress
+
+        in_progress:
+            label:
+                en: "Depressurisation in progress..."
+            category: repeat
+            command:
+                service: [ "16", "01" ]
+                repeat: 1000
+                timeout: 10000
+            responses:
+                endok: [ [ "70", "16", "01" ] ]
+                endko: [ [ "70", "16", "00" ] ]
+
+        endok:
+            label:
+                en: "Depressurisation is complete. Now disconnect the battery"
+            category: finish
+
+        endko:
+            label:
+                en: "The operation could not be completed"
+            category: finish
+
+
+x7_suspension_ecotech_set_heights:
+    vehicle: X7
+    ecuname: SUSPENSION_ECOTECH
+    label:
+        en: Calibrate the suspension height
+    help:
+        en: For vehicles WITHOUT CSS ECU only
+    steps:
+        start:
+            label:
+                en: Do not use this procedure if you have CSS ECU (V6 models). Enter the heights in the next step
+            category: entry
+            next_step: submit_heights
+
+
+        submit_heights:
+            category: normal
+            label:
+                en: "Setting of heights in progress..."
+            command:
+                variables: [ "F,Front,I,2", "R,Rear,I,2", ]
+                service: [ "31", "B3", "00", "$F", "$R" ]
+
+            responses:
+                waitok:    [ "71", "B3", "01" ]
+                finiok:    [ "71", "B3", "02" ]
+                setko:     [ [ "71", "B3", "03" ], [ "71", "B3", "04" ] ]
+
+        waitok:
+            label:
+                en: "Waiting for height calibration..."
+            category: repeat
+            command:
+                service: [ "31", "B3", "01" ]
+                repeat: 1000
+                timeout: 10000
+            responses:
+                finiok: [ "71", "B3", "02" ]
+                setko:  [ [ "71", "B3", "03" ], [ "71", "B3", "04" ] ]
+
+        finiok:
+            label:
+                en: "The height calibration completed successfully!"
+            category: finish
+
+        setko:
+            label:
+                en: "The height calibration failed"
+            category: finish
+
+
+x7_css_set_heights:
+    vehicle: X7
+    ecuname: CSS
+    label:
+        en: Calibrate the suspension height
+    help:
+        en: Follow the procedure outlined in the technical manual, and enter the calculated heights when prompted
+    steps:
+        start:
+            label:
+                en: Calibrate the height sensors on the axle. Follow the procedure in the manual. Enter the heights in the next step
+            category: entry
+            next_step: submit_heights
+
+
+        submit_heights:
+            category: normal
+            label:
+                en: "Setting of heights in progress..."
+            command:
+                variables: [ "FL,FrontLeft,I,2", "FR,FrontRight,I,2", "RL,RearLeft,I,2", "RR,RearRight,I,2" ]
+                service: [ "31", "B3", "00", "$FL", "$FR", "$RL", "$RR" ]
+
+            responses:
+                waitok:    [ "71", "B3", "01" ]
+                finiok:    [ "71", "B3", "02" ]
+                setko:     [ [ "71", "B3", "03" ], [ "71", "B3", "04" ] ]
+
+        waitok:
+            label:
+                en: "Waiting for height calibration..."
+            category: repeat
+            command:
+                service: [ "31", "B3", "01" ]
+                repeat: 1000
+                timeout: 10000
+            responses:
+                finiok: [ "71", "B3", "02" ]
+                setko:  [ [ "71", "B3", "03" ], [ "71", "B3", "04" ] ]
+
+        finiok:
+            label:
+                en: "The height calibration completed successfully!"
+            category: finish
+
+        setko:
+            label:
+                en: "The height calibration failed"
+            category: finish
+                
+                
+x7_BSI_showroom:
+    vehicle: X7
+    ecuname: BSI
+    label:
+        en: "Set showroom mode"
+    help:
+        en: "Change to showroom mode disables economy mode and allows certain power consuming equipment to continue running"
+
+    steps:
+        start:
+            category: entry
+            label:
+                en: Set showroom mode
+            next_step: set_mode
+
+        set_mode:
+            label:
+                en: "Showroom mode set in progress..."
+            command:
+                service: [ "31", "AD", "00", "00", "A1", "01" ]
+            
+            responses:
+                finiok: [ "71", "AD", "02" ]
+                setko: [ "71", "AD", "03" ]
+                waitok: [ "71", "AD", "01" ]
+
+        waitok:
+            label:
+                en: "Waiting for operation to complete..."
+            category: repeat
+            command:
+                service: [ "31", "AD", "01" ]
+                repeat: 1000
+                timeout: 10000
+            responses:
+                finiok: [ "71", "AD", "02" ]
+                setko:  [ [ "71", "AD", "03" ], [ "71", "AD", "04" ] ]        
+
+        setko:
+            template: finish_ko
+
+        finiok:
+            template: finish_ok
+
+
+           
+x7_BSI_customer:
+    vehicle: X7
+    ecuname: BSI
+    label:
+        en: "Set customer mode"
+    help:
+        en: "Change to customer mode exits the showroom mode"
+
+    steps:
+        start:
+            category: entry
+            label:
+                en: Set customer mode
+            next_step: set_mode
+
+        set_mode:
+            label:
+                en: "Customer mode set in progress..."
+            command:
+                service: [ "31", "AD", "00", "00", "A2", "01" ]
+            
+            responses:
+                finiok: [ "71", "AD", "02" ]
+                setko: [ "71", "AD", "03" ]
+                waitok: [ "71", "AD", "01" ]
+
+        waitok:
+            label:
+                en: "Waiting for operation to complete..."
+            category: repeat
+            command:
+                service: [ "31", "AD", "01" ]
+                repeat: 1000
+                timeout: 10000
+            responses:
+                finiok: [ "71", "AD", "02" ]
+                setko:  [ [ "71", "AD", "03" ], [ "71", "AD", "04" ] ]        
+
+        setko:
+            template: finish_ko
+
+        finiok:
+            template: finish_ok
+
+
+
+    

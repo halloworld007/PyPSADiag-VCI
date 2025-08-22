@@ -1,0 +1,51 @@
+{
+  "name": "combine",
+  "tx_id": "75F",
+  "rx_id": "65F",
+  "protocol": "uds",
+  "key_type": "multi",
+  "keys":  {
+    "Key1": "50A6"
+  },
+  "coding": true,
+  "errors": true,
+  "include_zone_object": "./data/IdentUDSECU.json",
+  "tabs": {
+    "ident": "Identification",
+    "tele": "Telecoding"
+  },
+  "zones": {
+    "2100": {
+      "id": "Configuration_Group_Data_List",
+      "tab": "tele",
+      "name": "Configuration group data list",
+      "byte": 0,
+      "type": "raw",
+      "form_type": "string"
+    },
+    "2101": {
+      "id": "Configuration_Group_Data_Values",
+      "tab": "tele",
+      "name": "Configuration group data values",
+      "byte": 0,
+      "type": "raw",
+      "form_type": "string"
+    },
+    "2200": {
+      "id": "Configuration_Group_Data_Values",
+      "tab": "tele",
+      "name": "Configuration group data values",
+      "byte": 0,
+      "type": "raw",
+      "form_type": "string"
+    },
+    "2300": {
+      "id": "Configuration_Group_Data_Values",
+      "tab": "tele",
+      "name": "Configuration group data values",
+      "byte": 0,
+      "type": "raw",
+      "form_type": "string"
+    }
+  }
+}

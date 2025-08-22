@@ -1,0 +1,220 @@
+CFG_BKN_MATT_CONF_ALERTES_000:
+  label:
+    en: "On-board computer warnings"
+    fr: "Presence fonction alertes"
+  help:
+    fr: ""
+    en: ""
+  states:
+    CFG_BKN_MATT_CONF_ALERTES_000_VD_0:
+      fr: ""
+      en: ""
+    CFG_BKN_MATT_CONF_ALERTES_000_VD_1:
+      fr: ""
+      en: ""
+CFG_BP0_MATT_MENU_LANGUE_000:
+  label:
+    en: "Language menu"
+    fr: "Presence du choix de la langue dans le menu de l emf"
+CFG_BKP_MATT_CONF_AUDIO_000:
+  label:
+    en: "Media data from the head unit"
+    fr: "Presence fonction rappel des informations audio"
+CFG_BKQ_MATT_CONF_BVA_BVMP_000:
+  label:
+    en: "Gearbox transmission indicator (for display on a separate screen or in the upper right corner)"
+    fr: "Presence fonction BVA/BMP"
+CFG_BKR_MATT_CONF_LVV_000:
+  label:
+    en: "Cruise control and limiter (only limiter is possible depending on the display version)"
+    fr: "Presence fonction LVV"
+CFG_BKS_MATT_CONF_MAINT_000:
+  label:
+    en: "Output of maintenance information when the ignition is switched on"
+    fr: "Presence de la fonction indicateur de maintenance"
+CFG_BVU_MATT_MENU_PARAM_FCT_000:
+  label:
+    en: "Menu \"Car parameters\""
+    fr: "Presence fonction menu de parametrage des fonctions vehicule fct et xvv de l ecran"
+CFG_D2U_MATT_POP_NAV_VTH_000:
+  label:
+    en: "Displaying pop-up navigation pointers"
+CFG_BKV_MATT_CONF_NAV_000:
+  label:
+    en: "Displaying navigation from the head unit"
+    fr: "Presence fonction navigation"
+CFG_BKW_MATT_CONF_NIVHU_000:
+  label:
+    en: "Checking the oil level"
+    fr: "Presence fonction niveau huile"
+CFG_BKX_MATT_CONF_ODB_000:
+  label:
+    en: "Trip data"
+    fr: "Presence fonction ordinateur de bord"
+CFG_BKY_MATT_CONF_ODO_000:
+  label:
+    en: "Displaying the mileage in the bottom row"
+    fr: "Presence fonction odometres"
+CFG_BKZ_MATT_CONF_PAGE_T_EXT_000:
+  label:
+    en: "Display of the temperature screen"
+    fr: "Presence fonction page temperature exterieure"
+CFG_BL0_MATT_CONF_RVV_000:
+  label:
+    en: "Cruise control"
+    fr: "Presence fonction RVV"
+CFG_BVT_MATT_CONF_STT_000:
+  label:
+    en: "Keyless access"
+    fr: "Presence de la fonction STT"
+CFG_BW9_MATT_CONF_RAPPEL_XVV_000:
+  label:
+    en: "Top row with cruise control (for new displays - cruise memory display MEM)"
+    fr: "Presence popup de rappel des vitesses xvv memorisees"
+CFG_BL2_MATT_CONF_FCT_DESIGNATEUR_000:
+  label:
+    en: ""
+    fr: "Prise en compte du designateur filaire"
+CFG_BL3_MATT_CONF_MENU_TEMP_000:
+  label:
+    en: "The unit selection menu in the settings"
+    fr: "Presence des unites de temperature dans le menu dela matrice"
+CFG_BP3_MATT_MENU_PARAM_UL_000:
+  label:
+    en: "Language selection menu in settings"
+    fr: "Presence fonction menu de parametrage des unites langue de l ecran"
+CFG_BL5_MATT_CONF_PAGE_VIDE_000:
+  label:
+    en: ""
+    fr: "Presence ecran vide en z0"
+CFG_BQ2_MATT_CONF_MENU_PRECOND_000:
+  label:
+    en: "Webasto Settings Menu"
+    fr: "Presence du menu de preconditionnement"
+CFG_BQB_MATT_CONF_MENU_HARMONIE_000:
+  label:
+    en: "Color theme selection menu in settings"
+    fr: "Presence du menu de choix de l harmonie"
+CFG_BPX_MATT_CONF_MENU_REG_HEURE_000:
+  label:
+    en: "Time setting menu in settings"
+    fr: "Presence du menu de reglage de l heure"
+CFG_BOZ_MATT_MENU_TCFG_000:
+  label:
+    en: ""
+    fr: "Presence du menu de la touche configurable"
+CFG_BQC_MATT_CONF_HARMONIE_000:
+  label:
+    en: "Color theme"
+    fr: "Harmonie par defaut utilisee dans le matrice"
+CFG_BPY_MATT_CONF_AFFICHAGE_HEURE_000:
+  label:
+    en: "Time display"
+    fr: "Presence de l affichage de l heure dans la matrice"
+CFG_DBB_MATT_CONF_RVVI_000:
+  label:
+    en: "Adaptive cruise control"
+    fr: "Presence de la fonction regulateur de vitesse vehicule interactive"
+CFG_BPZ_MATT_CONF_TYPE_CLE_000:
+  label:
+    en: "Starting the engine with the Start button"
+    fr: "Type de cle demarrage vehicule"
+CFG_DBQ_MATT_CONF_DSG_CHECK_000:
+  label:
+    en: "Displaying messages about a drop in tire pressure"
+    fr: "Affichage de l ihm dsg d un appui push check"
+CFG_D0B_MATT_CONF_GSI_001:
+  label:
+    en: "Tire pressure drop detection system / gear indicator in the upper right corner"
+    fr: "Presence de la fonction gsi"
+CFG_BQD_MATT_CONF_SILHOUETTE_000:
+  label:
+    en: "Body type (silhouette)"
+    fr: "Configuration du type de silhouette du vehicule"
+CFG_BOY_MATT_ITEM_BLACKPANEL_TCFG_000:
+  label:
+    en: "Black panel mode"
+    fr: "Configuration de la presence de l item black panel dans le menue de la touche configurable"
+CFG_BOX_MATT_ITEM_ACCESJDA_TCFG_000:
+  label:
+    en: "History of warnings"
+    fr: "Configuration de la presence de l item acces jda dans le menu de la touche configurable"
+CFG_BOW_MATT_ITEM_PERSOCMB_TCFG_000:
+  label:
+    en: ""
+    fr: "Configuration de la presence de l item personalisation cmb dans le menu de la touche configurable"
+CFG_BQ1_MATT_ITEM_COLORCMB_TCFG_000:
+  label:
+    en: ""
+    fr: "Configuration de la presence de l item colorisation cmb dans le menu de la touche configurable"
+CFG_BOU_MATT_ITEM_ECLAIPLAF_TCFG_000:
+  label:
+    en: ""
+    fr: "Configuration de la presence de l item eclairage plafonnier dans le menu de la touche configurable"
+CFG_BQ3_MATT_CONF_ARTIV_ACC_000:
+  label:
+    en: "Adaptive cruise control mode"
+    fr: "Presence de la fonction artiv ou acc"
+CFG_BPB_MATT_MENU_UNIT_000:
+  label:
+    en: "Presence of the menu for choosing the units of fuel consumption"
+    fr: "Presence du menu de choix des unites de conso dans le menu de l ecran"
+CFG_BOT_MATT_MENU_SONS_000:
+  label:
+    en: "The menu for selecting the tune of the steering wheel switch"
+    fr: "Presence du menu de choix des sons"
+CFG_BQA_MATT_CONF_COULEUR_RETRO_000:
+  label:
+    en: ""
+CFG_BWA_MATT_CONF_HYBRIDE_000:
+  label:
+    en: "Presence of a hybrid system"
+    fr: "Presence de la fonction hybride"
+CFG_D2V_MATT_PRES_AAS_000:
+  label:
+    en: "Availability of an obstacle detection system"
+    fr: "Presence aide au stationnement sur le reseau"
+CFG_DC0_MATT_CONF_POI_RADAR_000:
+  label:
+    en: "Show the radar data"
+    fr: "Gestion des donnees poi radar"
+CFG_DC1_MATT_CONF_VIT_CONSEILLE_000:
+  label:
+    en: ""
+    fr: "Gestion de la vitesse conseillee"
+CFG_DBR_MATT_CONF_AFF_DYN_000:
+  label:
+    en: ""
+    fr: "Presence du pack dynamique"
+CFG_D8H_MATT_MARQUE_000:
+  label:
+    en: ""
+CFG_DX8_MATT_GENERATION_RVVI_000:
+  label:
+    en: "Indicates the generation of RVVI system"
+CFG_E16_MATT_GENERATION_POI_RADAR_001:
+  label:
+    en: "Indicates the type of POI"
+    fr: ""
+CFG_E13_MATT_TYPE_FM_002:
+  label:
+    en: "Indicates the type FM"
+CFG_E12_MATT_TYPE_EXPORT_000:
+  label:
+    en: "Indicates the type of export for audio function"
+CFG_EC3_MATT_CONF_LKA_000:
+  label:
+    en: "Lane tracking system"
+    fr: "Presence de la fonction LKA"
+CFG_EC4_MATT_CONF_ECO_COACHING_000:
+  label:
+    en: ""
+    fr: "Presence de la fonction eco coaching"
+CFG_EC5_MATT_CONF_ALARM_GULF_COUN_000:
+  label:
+    en: ""
+    fr: "Presence de la fonction alarme alerte pays du golfe"
+CFG_EC7_MATT_CONF_ACC_000:
+  label:
+    en: ""
+    fr: "Presence de la fonction ACC"

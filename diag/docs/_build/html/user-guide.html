@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>User Guide &mdash; Diagnostique 21.4.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Discovery" href="user/discovery.html" />
+    <link rel="prev" title="Supported Vehicles" href="vehicle-support.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Diagnostique
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">F.A.Qs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vehicle-support.html">Supported Vehicles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/discovery.html">Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/faults.html">Fault Reading &amp; Clearing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/live-data.html">Live Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/actuator-test.html">Actuator Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/telecoding.html">Telecoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/procedures.html">Procedures</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/intro.html">Project Intro</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aee-guide.html">Architecture Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diagnostique</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/user-guide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p><strong>IMPORTANT</strong>: Due to the incredible complexity of the system, not all ECUs have been tested, nor could they be (there are more than 34,000 variations). As a result, you will occasionally run into errors or “exceptions” to known rules. The system will always attempt to fail “safe”, by safely aborting any ECU action in progress. Error logs are detailed and will allow the developers to identify (and hopefully fix) the problem, so PLEASE send us the logfile/a description of what went wrong!</p>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Download and install the software. It should include all necessary dependencies, but if you run into a problem take a look at the FAQ</p></li>
+<li><p>Connect your chosen hardware</p></li>
+<li><p>Start the software and click/tap “Configure” in the top right, then choose the type of adapter and then its COM port. You can also adjust any other settings to suit your preferences, such as Language (requires restarting software).</p></li>
+</ol>
+<dl class="py function">
+<dt id="enumerate">
+<code class="sig-name descname"><span class="pre">enumerate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">sequence</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">start=0</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#enumerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator that yields tuples of an index and an item of the
+<em>sequence</em>. (And so on.)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="user/discovery.html" class="btn btn-neutral float-right" title="Discovery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="vehicle-support.html" class="btn btn-neutral float-left" title="Supported Vehicles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, lorddevereux.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

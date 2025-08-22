@@ -1,0 +1,70 @@
+{
+  "name": "BECB_GEN2",
+  "tx_id": "6C4",
+  "rx_id": "604",
+  "protocol": "kwp_hab",
+  "key_type": "single",
+  "keys": "****",
+  "coding": true,
+  "errors": true,
+  "tabs": {
+    "ident": "Identification",
+    "tele": "Telecoding"
+  },
+    "zones": {
+        "B2": {
+            "id": "Gauging_Group_Data_Values",
+            "name": "Gauging group data values",
+            "tab": "tele",
+            "type": "raw",
+            "form_type": "multi",
+            "CFG_DAE_PARK_01": {
+                "name": "Calibration for state of charge in battery",
+                "byte": 2,
+                "type": "bool",
+                "form_type": "combobox",
+                "mask": "11111111",
+                "params": [
+                    {
+                        "name": "Value not specified",
+                        "mask": "00000000"
+                    },
+                    {
+                        "name": "83",
+                        "mask": "10000011"
+                    }
+                ]
+            }
+        },
+        "DA": {
+            "name": "Supplier",
+            "tab": "ident",
+            "byte": 1,
+            "byte_range": 1,
+            "type": "zi_sup",
+            "form_type": "string"
+        },
+        "D0": {
+            "name": "Equipment Part Number",
+            "tab": "ident",
+            "byte": 0,
+            "type": "raw",
+            "form_type": "string"
+        },
+        "D7": {
+            "name": "Equipment Additional Reference",
+            "tab": "ident",
+            "byte": 0,
+            "type": "raw",
+            "form_type": "string"
+        },
+        "D8": {
+            "name": "Calibration Version",
+            "tab": "ident",
+            "byte": 0,
+            "byte_range": 2,
+            "type": "raw",
+            "form_type": "string"
+        }
+    }
+}

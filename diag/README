@@ -1,0 +1,64 @@
+DIAGNOSTIQUE - STABLE(ish)
+==========================
+
+How to use
+----------
+
+Recommended - download the latest stable 1.23 version. This is compiled into a Windows binary so you don't need any of the dependencies, or to have Python installed.
+
+
+Databases
+---------
+You'll need to download the databases (80-100mb zip) separately and copy to the db folder
+- STABLE - July 21: https://bitbucket.org/thoste5/diagnostique/downloads/db.zip
+- EXPERIMENTAL - July 22:  https://bitbucket.org/thoste5/diagnostique/downloads/db-jul-22.zip
+
+
+For the EvolutionXS to work properly
+------------------------------------
+
+**IMPORTANT** - You MUST run Diagnostique from the same disk drive that the following folders are installed on (the C drive). Otherwise, you will encounter strange errors and the VCI will not work. See documentation for more information about this.
+
+If you are using with the EvolutionXS VCI (Windows only) - currently the only supported adapter, you need to have the drivers and necessary files installed already (a working diagbox install) or:
+
+- The actual hardware drivers installer
+- The /AWRoot/drv folder
+- The /AWRoot/dtrd/comm/data folder and contents (no need for the FDB databases)
+
+The comm/data folder contains some file that is hardcode referenced from the actia VCI DLL (no kidding) and it won't work without it
+
+
+Dependencies
+------------
+You must use 32BIT python or the VCI DLL will not work. If you're not using the VCI, use what you like :)
+
+> pip3 install kivy kivy-garden pyserial pyyaml
+
+Then you need the following kivy garden flower
+
+> garden install navigationdrawer
+
+Tkinter is needed for the Treeview database browsing app
+
+To use SocketCAN under linux you'll need
+
+> pip3 install python-can
+
+And to use the ELM327 bluetooth driver you'll need this. On linux you'll need libbluetooth-dev for this to work
+
+> pip3 install pybluez
+
+Running the main app
+--------------------
+From the root directory run
+
+> python3 main.py
+
+
+Running the treeview database explorer
+From the treeview directory
+
+> python main.py
+
+
+

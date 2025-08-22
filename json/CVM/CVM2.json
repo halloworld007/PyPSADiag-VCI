@@ -1,0 +1,147 @@
+{
+  "name": "cvm",
+  "tx_id": "74A",
+  "rx_id": "64A",
+  "protocol": "uds",
+  "key_type": "single",
+  "keys":  "E2E5",
+  "coding": true,
+  "errors": true,
+  "include_zone_object": "./data/IdentUDSECU.json",
+  "tabs": {
+    "ident": "Identification",
+    "tele": "Telecoding"
+  },
+  "zones": {
+    "2100": {
+      "id": "Gauging_Group_Data_Values",
+      "name": "Gauging group data values",
+      "tab": "tele",
+      "type": "raw",
+      "form_type": "multi",
+      "CFG_ETX_TYPE_ECLAIRAGE_004": {
+        "name": "Type of lighting",
+        "byte": 1,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11000000",
+        "params": [
+          {
+            "name": "Halogen lamp",
+            "mask": "00000000"
+          },
+          {
+            "name": "Xenon lamp",
+            "mask": "01000000"
+          }
+        ]
+      },
+      "CFG_ETW_CVM_CVM_OPTION_SLI_004": {
+        "name": "Speed limit indication",
+        "byte": 0,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11000000",
+        "params": [
+          {
+            "name": "Function ABSENT",
+            "mask": "00000000"
+          },
+          {
+            "name": "Function present with navigation system",
+            "mask": "10000000"
+          },
+          {
+            "name": "Function present without navigation system",
+            "mask": "01000000"
+          }
+        ]
+      },
+      "CFG_ETV_CVM_CV_LDW_REGULATION_004": {
+        "name": "Lane keeping assist",
+        "byte": 0,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00100000",
+        "params": [
+          {
+            "name": "Function ABSENT",
+            "mask": "00000000"
+          },
+          {
+            "name": "Function present",
+            "mask": "00100000"
+          }
+        ]
+      },
+      "CFG_ETS_CVM_FAEBS_PRESENT_004": {
+        "name": "Emergency collision braking function",
+        "byte": 0,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00010000",
+        "params": [
+          {
+            "name": "Function ABSENT",
+            "mask": "00000000"
+          },
+          {
+            "name": "Function present",
+            "mask": "00010000"
+          }
+        ]
+      },
+      "CFG_ETT_CVM_HBA_PRESENT_004": {
+        "name": "Headlamp assistant function (HBA)",
+        "byte": 0,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00001000",
+        "params": [
+          {
+            "name": "Function ABSENT",
+            "mask": "00000000"
+          },
+          {
+            "name": "Function present",
+            "mask": "00001000"
+          }
+        ]
+      },
+      "CFG_ETU_CVM_CVM_LDW_PRESENT_004": {
+        "name": "Lane departure warning system",
+        "byte": 0,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00000100",
+        "params": [
+          {
+            "name": "Function ABSENT",
+            "mask": "00000000"
+          },
+          {
+            "name": "Function present",
+            "mask": "00000100"
+          }
+        ]
+      },
+      "CFG_ETY_CVM_LDW_PRESENT_004": {
+        "name": "Type of alarm for lane keeping assistance",
+        "byte": 0,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00000011",
+        "params": [
+          {
+            "name": "Without ACC",
+            "mask": "00000000"
+          },
+          {
+            "name": "With ACC",
+            "mask": "00000010"
+          }
+        ]
+      }
+    }
+  }
+}

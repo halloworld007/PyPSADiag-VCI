@@ -1,0 +1,1652 @@
+#:import utils kivy.utils
+
+<DGLabel>:
+    color: 0,0,0,1
+    font_name: app.root_font
+    valign: "center"
+    halign: "left"
+
+<DGLabelAS>:
+    text_size: self.size
+
+<DGLabelW>:
+    color: 1,1,1,0.8
+    font_name: app.root_font
+    valign: "center"
+    halign: "left"
+
+<DGButton>:
+    color: 1,1,1,0.8
+    background_color: utils.get_color_from_hex("#0E4480") if self.state=='normal' else utils.get_color_from_hex("#3D6A9D")  # visual feedback of press
+    background_normal: "img/btn_norm.png"
+    background_down: ""
+    background_disabled_normal: ""
+    background_disabled_down: ""
+    font_name: app.root_font
+    valign: "center"
+    size_hint_y: None
+    height: self.texture_size[1] * 2
+
+<DGToggleButton>:
+    color: 1,1,1,0.8
+    background_color: utils.get_color_from_hex("#0E4480") if self.state=='normal' else utils.get_color_from_hex("#3D6A9D")  # visual feedback of press
+    background_normal: "img/btn_norm.png"
+    background_down: ""
+    background_disabled_normal: ""
+    background_disabled_down: ""
+    font_name: app.root_font
+    valign: "center"
+    size_hint_y: None
+    height: self.texture_size[1] * 2
+
+<DGSpinner>:
+    color: 1,1,1,.8
+    background_color: utils.get_color_from_hex("#0E4480") if self.state=='normal' else utils.get_color_from_hex("#3D6A9D") 
+    background_normal: ""
+    background_down: ""
+    background_disabled_normal: ""
+    background_disabled_down: ""
+    font_name: app.root_font
+    size_hint_y: None
+    valign: "center"
+    option_cls: "DDButton"
+    height: self.texture_size[1] * 1.4
+
+<DDButton>:
+    color: 1,1,1,0.8
+    background_color: utils.get_color_from_hex("#0E4480") if self.state=='normal' else utils.get_color_from_hex("#3D6A9D")  # visual feedback of press
+    background_normal: "img/btn_norm.png"
+    background_down: ""
+    background_disabled_normal: ""
+    background_disabled_down: ""
+    font_name: app.root_font
+    valign: "center"
+    size_hint_y: None
+    height: sp(40)
+
+<DGActionButton>:
+    background_color: utils.get_color_from_hex("#0E4480")
+    color: 1,1,1,.8
+    font_name: app.root_font
+    background_normal: ""
+    background_down: ""
+    background_disabled_normal: ""
+    background_disabled_down: ""
+    valign: "center"
+
+<DGActionLabel>:
+    background_color: utils.get_color_from_hex("#0E4480")
+    color: 1,1,1,.8
+    font_name: app.root_font
+
+<TabbedPanelStrip>
+    canvas:
+        Color:
+            rgba: (1, 1, 1, 1) 
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<TabbedPanelHeader>:
+    background_color: utils.get_color_from_hex("#0E4480") if self.state=='normal' else utils.get_color_from_hex("#3D6A9D") 
+    background_normal: ""
+    background_down: ""
+    background_disabled_normal: ""
+    background_disabled_down: ""
+    font_name: app.root_font
+
+<Main>:
+
+    cols: 1
+    rows: 2
+
+    ActionBar:
+        height: sp(30)
+        background_image: ''
+        background_color: utils.get_color_from_hex("#0E4480")
+        
+        ActionView:      
+            use_separator: True
+            ActionPrevious:        
+                on_release: app.ask_home(sm)
+                app_icon: "img/logo.png"
+
+            ActionOverflow:
+
+            DGActionButton:
+                icon: 'img/btn_save.png'
+                on_release: app.discovery_save()
+            DGActionButton:
+                icon: 'img/btn_log.png'
+                on_release: app.toggle_log()
+            DGActionButton:
+                icon: 'img/settings.png'
+                on_press: sm.get_screen("setting").show_settings()
+            #DGActionButton:
+            #    icon: 'img/btn_tools.png'
+            #    on_press: sm.get_screen("utilities").show_utilities()
+            DGActionButton:
+                id: adap_stat
+                icon: 'img/btn_adap.png' #app.trs.ui("adaptermenu")
+                on_press: sm.get_screen("adapters").show_adapters()
+            DGActionLabel:
+                text: "v" + str(app.version)
+            DGActionButton:
+                id: marque_logo
+                icon: 'img/mb.png'
+            DGActionButton:
+                id: do_exit
+                icon: 'img/door.png'
+                on_press: app.close()
+
+    ScreenManager:
+        id: sm
+        MainMenu:
+            id: main
+        Progress:
+            id: progress
+        Choose:
+            id: choose
+        Setting:
+            id: setting
+        Adapters:
+            id: adapters
+        Centre:
+            id: centre
+        SelectVeh:
+            id: selectveh
+        Discovery:
+            id: discovery
+        Utilities:
+            id: utilities
+        SelectECU:
+            id: selectecu
+        
+
+<MainMenu>:
+    name: "main"
+
+    GridLayout:
+        rows: 2
+
+        DGLabel:
+            text: app.trs.ui("welcome")
+            font_size: '24sp'
+            size_hint_y: None
+            padding: 10,10
+            height: self.texture_size[1] + dp(20)
+        
+        GridLayout:
+            cols: 2
+            padding: [ 10, 15 ]
+            spacing: [ 10, 40 ]
+
+            AnchorLayout:
+                padding: 10,10
+                anchor_x: 'center'
+
+                GridLayout:
+                    cols: 1
+                    size_hint_x: 0.6
+
+                    Image:
+                        source: "img/btn_add.png"
+                    DGButton:
+                        text: app.trs.ui("newveh")
+                        on_press: 
+                            root.manager.get_screen("selectveh").initiate()
+                            root.manager.transition.direction: 'right'                  
+
+                        padding: 2,2
+
+            DGLabel:
+                text: app.trs.ui("newexp")
+                text_size: self.size
+                valign: "center"
+
+            AnchorLayout:
+                anchor_x: 'center'
+                padding: 1,1
+
+                GridLayout:         
+                    cols: 1
+                    size_hint_x: 0.6
+
+                    Image:
+                        source: "img/btn_saved.png"
+                    DGButton:
+                        text: app.trs.ui("prevveh")
+                        padding: 2,2
+                        on_release: 
+                            #root.manager.get_screen('centre').initiate({"BSI": { "STATUS": "IDENTOK", "TX_H": 652, "ECUNAME": "BSI", "RX_H": 752, "BUS": "DIAG", "FAULTS": 18, "ECUID" : 2974, "ECUVEID" : 13746, "VARIANT": "BSI_X7_V3"}, "COMBINE" : { "STATUS":"IDENTOK", "FAULTS": 0, "ECUID":2990, "ECUVEID": 1102, "ECUNAME": "COMBINE", "VARIANT": "COMBINE_X7_V13" }})
+                            root.manager.get_screen('discovery').load_previous_vehicle()
+
+            DGLabel:
+                text: app.trs.ui("prevexp")
+                text_size: self.size
+                valign: "center"
+
+            AnchorLayout:
+                padding: 1,1
+                anchor_x: 'center'
+                DGButton:
+                    text: app.trs.ui("singleecu")
+                    on_press: root.manager.get_screen("selectecu").initiate()
+                    width: root.width / 2
+                    size_hint_x: .6
+                    padding: 2,2
+                
+            DGLabel:
+                text: app.trs.ui("benchtest")
+                text_size: self.size
+                valign: "center"
+
+
+
+
+<SelectECU>:
+    name: "selectecu"
+
+    GridLayout:
+        cols: 1
+        spacing: 10,10
+        padding: 10,10
+    
+        DGLabel:
+            text: app.trs.ui("singleecu")
+            font_size: '24sp'
+            size_hint_y: None
+            padding: 10,10
+            height: self.texture_size[1] + dp(20)
+
+        GridLayout:
+            cols: 2
+            spacing: 10,10
+            padding: 10,10
+            size_hint_y: 0.2
+
+            #TextInput:
+            #    size_hint_y: None
+            #    height: dp(30)
+            #    hint_text: "e.g. a hardware ID"
+
+            #DGButton:
+            #    size_hint_x: 0.3
+            #    size_hint_y: None
+            #    height: dp(20)
+            #    text: "Search"
+            #    on_release: root.user_search()
+      
+        
+        GridLayout:
+            cols: 2
+            spacing: 10,10
+            padding: 10,10
+
+            DGLabel:
+                text: "MODEL (Origin)"
+
+            DGLabel:
+                text: "ECU FAMILY"
+            
+
+            DGSpinner:
+                id: models
+                text: "Choose"
+                disabled: True
+                values: []
+                on_text: root.user_onmodels()
+                size_hint_y: None
+                height: dp(30)
+            
+            DGSpinner:
+                id: famids
+                text: "Choose"
+                disabled: True
+                values: []
+                on_text: root.user_onfamid()
+                size_hint_y: None
+                height: dp(30)
+
+
+            DGLabel:
+                text: "ECU TYPE (ID)"
+            
+            DGLabel:
+                text: "ECU VARIANT (VEID)"
+
+            
+            
+            DGSpinner:
+                id: ecuids
+                text: "Choose"
+                disabled: True
+                values: []
+                on_text: root.user_onecuid()
+                size_hint_y: None
+                height: dp(30)
+            
+            DGSpinner:
+                id: ecuveids
+                text: "Choose"
+                disabled: True
+                values: []
+                on_text: root.user_onecuveid()
+                size_hint_y: None
+                height: dp(30)
+
+        ScrollView:
+            DGLabel:
+                id: lbl_readout
+                size_hint: None, None
+                size: self.texture_size
+                font_name: 'img/VeraMono.ttf'
+                padding_x: 10
+        
+        DGButton:
+            id: btn_next
+            disabled: True
+            size_hint_x: 0.4
+            text: app.trs.ui("continue")
+            on_release: root.user_confirm()
+
+
+        
+
+
+<Choose>:
+    id: choose
+    name: "choose"
+    lbl_title: title_txt
+
+    GridLayout:
+        cols: 1
+        padding: 3
+
+        DGLabel:
+            id: title_txt
+            font_size: '24sp'
+            size_hint_y: None
+            padding: 10,10
+            height: self.texture_size[1] + dp(20)
+            text: app.trs.ui("selectecu")
+
+        
+        GridLayout:
+            cols: 3
+            rows: 1
+            padding: 20,5
+            size_hint_y: None
+            height: 50
+            col_default_width: 0.5
+
+            DGButton:
+                id: selectall
+                width: root.width / 3
+                size_hint_x: None
+                padding: 20,2
+                text: app.trs.ui("deselectall") # select all by default
+                on_press: root.toggle_select()
+            DGLabel:
+                width: root.width / 3
+            DGButton:
+                id: next
+                size_hint_x: None
+                width: root.width / 3
+                text: app.trs.ui("continue")
+                on_press: root.proceed()
+
+        ScrollView:
+            bar_width: 50
+            size_hint: 1,1
+
+            GridLayout:
+                size_hint_x: 1
+                size_hint_y: None
+                height: self.minimum_height
+                id: checklist
+                cols: 3
+                col_default_width: 100
+                row_default_height: 40
+
+
+<Adapters>:
+    name: "adapters"
+
+    GridLayout:
+        cols: 1
+
+        DGLabel:
+            text: app.trs.ui("adaptersetting")
+            font_size: '24sp'
+            size_hint_y: None
+            padding: 10,10
+            height: self.texture_size[1] + dp(20)
+
+        ScrollView:
+            size: 1, 1
+
+            GridLayout:
+                size_hint_y: None
+                height: self.minimum_height
+                cols: 2
+                row_default_height: 30
+                spacing: [ 10, 20 ]
+                padding: [ 10, 20 ]
+
+
+                DGLabel:
+                    text: app.trs.ui("adaptercomm")
+            
+                DGSpinner:
+                    id: com_ports
+                    values: []
+                    on_text: root.com_port_change()
+
+            
+                DGLabel:
+                    text: app.trs.ui("connecttest")
+                
+                DGButton:
+                    text: app.trs.ui("connect")
+                    on_release: root.test_connection()
+
+                DGLabel:
+                    text: app.trs.ui("adapvers")
+
+                DGLabel:
+                    id: ada_vers
+                    text: app.trs.ui("statnone") 
+            
+
+
+<Setting>:
+    name: "setting"
+
+    ScrollView:
+        size: 1, 1
+
+        GridLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            cols: 2
+            row_default_height: 30
+            spacing: [ 10, 20 ]
+            padding: [ 10, 20 ]
+
+            DGLabel:
+                text: app.trs.ui("languageui")
+
+            DGSpinner:
+                id: lngui
+                size_hint: 0.4, 0.2
+                values: app.trs.lngsui
+
+            DGLabel:
+                text: app.trs.ui("languagediag")
+
+            DGSpinner:
+                id: lngdiag
+                size_hint: 0.4, 0.2
+                values: app.trs.lngs
+
+            DGLabel:
+                text: app.trs.ui("showhelp")
+
+            Switch:
+                id: showhelp
+
+            DGLabel:
+                text: app.trs.ui("autoloadtlcd")
+            Switch:
+                id: autoload_tlcd
+            
+            DGLabel:
+                text: app.trs.ui("autoloadident")
+
+            Switch:
+                id: autoload_ident
+
+            DGLabel:
+                text: app.trs.ui("usermode")
+
+            DGSpinner:
+                id: user_mode
+            
+            DGLabel:
+                text: app.trs.ui("logfolder")
+            
+            GridLayout:
+                cols: 2
+                
+                DGLabel:
+                    id: log_dir
+                    shorten: True
+                    text_size: self.size
+
+                DGButton:
+                    text: "Browse.."
+                    on_press: root.browse_user()
+            
+            DGLabel:
+                text: app.trs.ui("adapter")
+
+            DGSpinner:
+                id: adapter_type
+                values: app.ada.adapter_types
+                on_text: root.adapter_type_change()
+
+            DGLabel:
+                text: ""
+
+            DGButton:
+                text: app.trs.ui("saveclose")
+                size_hint_y: 0.8
+                on_release: root.hide_settings()
+
+
+<Progress>:
+    name: "progress"
+
+    GridLayout:
+        cols: 1
+        padding: 10
+
+        DGLabel:
+            id: title_txt
+            font_size: '24sp'
+            size_hint_y: None
+            padding: 10,10
+            height: self.texture_size[1] + dp(20)
+            text: app.trs.ui("waitplease")
+
+        DGLabel:
+            id: title_prg
+            text: "0" + app.trs.ui("progression")
+
+        # animation of loading spinner/diag in progress
+        
+        ProgressBar:
+            max: 100
+            id: bar
+            width: 0.8
+            value: 0
+
+<Centre>:
+    name: "centre"
+    FloatLayout:
+        NavigationDrawer:
+            id: drawer
+            ScrollView:
+                bar_width: 50
+                size_hint: 1,1
+                GridLayout:
+                    id: ecu_list
+                    cols: 2
+                    width: 0.4
+                    size_hint_y: None
+                    height: self.minimum_height
+                    row_default_height: 30
+                    row_force_default: True
+
+                    DGLabelW:
+                        markup: True
+                        text: "[u]ECU[/u]"
+                    
+                    DGLabelW:
+                        markup: True
+                        text: app.trs.ui("fault_title")
+
+            GridLayout:
+                cols: 1
+                rows: 2
+
+                TabbedPanel:
+                    id: tab_master
+                    background_color: 1, 1, 1, 1
+                    background_image: ""
+                    tab_height: 25
+                    do_default_tab: False
+                    tab_pos: "top_right"
+                    
+                    tab_width: self.parent.width / 7
+
+
+                    DGTabbedPanelItem:
+                        id: tab_faults
+                        text: app.trs.ui("faults")
+                        on_release: root.tab_change(self)
+                        DGLabel:
+                            text: app.trs.ui("nofaults")
+                    DGTabbedPanelItem:
+                        id: tab_livedata
+                        text: app.trs.ui("livedata")
+                        on_release: root.tab_change(self)
+                        DGLabel:
+                            text: app.trs.ui("livedataempty")
+                    DGTabbedPanelItem:
+                        id: tab_test
+                        text: app.trs.ui("testing")
+                        on_release: root.tab_change(self)
+                        DGLabel:
+                            text: app.trs.ui("testingempty")
+                    DGTabbedPanelItem:
+                        id: tab_tlcd
+                        text: app.trs.ui("tlcd")
+                        on_release: root.tlcd_warning(self)
+                        DGLabel:
+                            text: app.trs.ui("tlcdempty")
+                    DGTabbedPanelItem:
+                        id: tab_ident
+                        text: app.trs.ui("tabid")
+                        on_release: root.tab_change(self)
+                        DGLabel:
+                            text: app.trs.ui("idempty")
+                    DGTabbedPanelItem:
+                        id: tab_proc
+                        text: app.trs.ui("tabproc")
+                        on_release: root.tab_change(self)
+                        DGLabel:
+                            text: app.trs.ui("procempty")
+
+                GridLayout:
+                    cols: 4
+                    size_hint_y: None
+                    height: 35
+
+                    AnchorLayout:                       
+                        anchor_x: "left"
+                        size_hint_x: 0.25
+                        DGLabel:
+                            id: stat_adapter
+                            text: app.trs.ui("ready")
+                            color: 1, 1, 1, 0.8
+
+                    AnchorLayout:                    
+                        anchor_x: "left"
+                        size_hint_x: 0.25
+                        DGLabel:
+                            id: stat_veh
+                            markup: True
+                            text: app.trs.ui("statvehicle") + app.trs.ui("statnone")
+                            color: 1, 1, 1, 0.8
+
+                    AnchorLayout:                      
+                        anchor_x: "left"
+                        size_hint_x: 0.25
+                        DGLabel:
+                            id: stat_ecu
+                            markup: True
+                            text: app.trs.ui("statecu") + app.trs.ui("statnone")
+                            color: 1, 1, 1, 0.8
+
+                    AnchorLayout:                   
+                        anchor_x: "right"
+                        size_hint_x: 0.25
+                        DGLabel:
+                            id: stat_vin
+                            markup: True
+                            text: app.trs.ui("statvin") + "n/a"
+                            color: 1, 1, 1, 0.8
+
+
+        DGButton:
+            pos: (tab_master.pos[0], root.height - sp(30))
+            size_hint_x: None
+            width: 100
+            icon: "img/ecu.png"
+            text: "ECU List"
+            on_press: drawer.toggle_state()
+
+<SelectVeh>:
+    name: "selectveh"
+    GridLayout:
+        cols: 1
+        row_default_height: 40
+        padding: [20, 20]
+        spacing: [20, 20]
+
+        DGLabel:
+            id: title_txt
+            font_size: '24sp'
+            size_hint_y: None
+            padding: 10,10
+            height: self.texture_size[1] + dp(10)
+            text: app.trs.ui("choosenew_title")
+
+        DGLabel:
+            text: app.trs.ui("choosenew")
+            text_size: self.size
+
+
+        DGSpinner:
+            id: marques
+            size_hint: 0.4, 0.2
+            text: 'Select'
+            values: []
+            on_text: root.update_models()
+
+        DGSpinner:
+            id: models
+            size_hint: 0.4, 0.2
+            text: 'Select'
+            values: []
+            disabled: True
+
+        AnchorLayout:
+            anchor_x: "center"
+            size_hint_y: 0.5
+            
+            DGButton:
+                size_hint_x: None
+                size_hint_y: 0.3
+                width: root.width / 3
+                text: app.trs.ui("continue")
+                on_press: root.press_next()
+
+<Discovery>:
+    name: "discovery"
+    GridLayout:
+        rows: 2
+        cols: 1
+
+        GridLayout:
+            cols: 1
+            rows: 2
+            size_hint_y: 0.3
+            
+            DGLabel:
+                id: title_txt
+                font_size: '24sp'
+                size_hint_y: None
+                padding: 10,10
+                height: self.texture_size[1] + dp(20)
+                text: app.trs.ui("discoveryplease")
+                
+            GridLayout:
+                cols: 2
+                
+                DGLabel:
+                    id: discovery_tip
+                    text_size: self.size
+                    padding_x: 5
+                    valign: 'middle'
+                    text: app.trs.ui("discoveryecomode")
+                
+                DGButton:
+                    text: app.trs.ui("stop")
+                    size_hint_x: 0.4
+                    on_press: root.acc.glt.stopDiscovery()
+
+        ScrollView:
+            bar_width: 50
+            size_hint: 1,1
+            
+            GridLayout:
+                cols: 5
+                size_hint_y: None
+                minimum_height: self.height
+                #eight: sum(x.height/7 for x in self.children)
+                id: disco_list
+
+                DGLabel:
+                    text: ""    # image
+                
+                DGLabel:
+                    text: app.trs.ui("titlefamily")
+
+                DGLabel:
+                    text: app.trs.ui("titlename")
+
+                DGLabel:
+                    text: app.trs.ui("titlevar")
+
+                DGLabel:
+                    text: app.trs.ui("titlefaults")
+
+
+<Utilities>:
+    name: "utilities"
+
+    GridLayout:
+        cols: 3
+        row_default_height: 50 
+        spacing: [10, 20]
+        padding: [10, 20]
+
+        DGLabel:
+            text: "Fault code lookup"
+            # provide manufacturer specific code for the number
+        
+        TextInput:
+            hint_text: "1243"
+
+        DGButton:
+            text: ">"
+
+        DGLabel:
+            text: "Lang Decoder"
+        
+        TextInput:
+            hint_text: "@P2847-POLUXDATA@"
+            multiline: False
+            on_text_validate: root.decodalate(self.text)
+
+        TextInput:
+            id: decodalated
+            hint_text: "Result..."
+            readonly: True
+
+        DGLabel:
+            text: "UDS Service Dump"
+    
+
+        
+
+
+
+#:import Factory kivy.factory.Factory
+
+# WIDGETS -------------------------------------------
+
+<CheckLabel>:
+    cols: 2
+    rows: 1
+
+    canvas:
+        Color:
+            rgba: .4, .4, .4, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    CheckBox:
+        size_hint_x: 0.3
+        id: chk
+        group: root.chk_grp
+        active: root.chk_sel
+    
+    DGLabel:
+        text: root.chk_lbl
+
+
+<SwitchLabel>:
+    cols: 2
+    rows: 1
+
+    Switch:
+        id: swit
+        active: root.sw_act
+    
+    DGLabel:
+        text: root.sw_lbl
+
+
+
+<ActTestBox@ScrollView>:
+    id: actscroll
+    bar_width: sp(30)
+    size_hint: 1, 1
+    
+    GridLayout:
+        id: act_list
+        size_hint_y: None
+        height: self.minimum_height
+        cols: 3
+        row_default_height: 35
+        spacing: [10,5]
+        padding: [10,10]
+
+    
+
+# A gridlayout with 2 columns, inside a scroll view, inside a tab view
+# "..inside a car inside a plane inside a boat"
+<TlcdList@GridLayout>:
+    rows: 3
+
+    GridLayout:
+        id: tlcd_buttons
+        cols: 5
+        size_hint_y: None
+        height: 25
+
+        DGButton:
+            text: app.trs.ui("fetchdata")
+            on_release: root.ppt.tlcd_refresh()
+
+        DGButton:
+            text: app.trs.ui("import")
+
+        DGButton:
+            text: app.trs.ui("export")
+            on_release: app.askfile(".ecuconfig", callback=root.ppt.tlcd_export_config)
+
+        DGButton:
+            text: app.trs.ui("savechanges")
+            on_release: app.yesno("confirmecuwrite", callbacky=root.ppt.tlcd_ecu_write)
+
+        DGLabel:
+            id: txt_changes
+            text: "0 changes"
+
+    DGLabel:
+        id: help_box
+        text_size: self.size
+        padding_x: 5
+        valign: 'middle'
+        size_hint_y: 0.15
+        markup: True
+        text: app.trs.ui("tlcdhelpdefault")
+
+    TabbedPanel:
+        id: tab_tlcd
+        do_default_tab: False
+        tab_width: sp(100)
+        tab_height: 20
+        background_color: 1, 1, 1, 1
+        background_image: ""
+
+    
+
+
+<LiDataList@GridLayout>:
+    rows: 3
+
+    GridLayout:
+        id: lidata_buttons
+        cols: 4
+        size_hint_y: None
+        height: 30
+
+        DGButton:
+            id: btn_log_toggle
+            text: app.trs.ui("startlog")
+            on_release: root.ppt.lidata_logging_toggle(self)
+            disabled: True
+
+        DGButton:
+            text: app.trs.ui("resetdefault")
+            on_release: root.ppt.lidata_resetview()
+            disabled: True
+        
+        DGButton:
+            id: lidata_opt
+            disabled: True
+            text: app.trs.ui("withselected")
+            on_release: root.ppt.optdown.open(self)
+   
+        DGToggleButton:
+            text: app.trs.ui("lidatacomms")
+            id: lidata_comms
+            state: "normal"
+            on_release: root.ppt.lidata_toggle(self, self.state)
+            
+    DGLabel:
+        id: help_box
+        text_size: self.size
+        visible: False
+        size_hint_x: 1 if self.visible else 0
+        padding_x: 5
+        valign: 'middle'
+        size_hint_y: 0.15
+        text: app.trs.ui("tlcdhelpdefault")    
+
+    # lidata sorted by "something" because loading hundreds of
+    # params is too painful
+    TabbedPanel:
+        id: tab_lidataz
+        do_default_tab: False
+        tab_width: sp(35)
+        tab_height: 20
+        background_color: 1, 1, 1, 1
+        background_image: ""
+
+
+<LiDataZone>:
+    RecycleView:
+        id: lidata_page
+        scroll_type: ['bars' ] #'content']
+        bar_width: 25
+        viewclass: 'LiDataRow'
+        
+        RecycleBoxLayout:
+            default_size: None, sp(40)
+            default_size_hint: 1, None
+            size_hint_y: None
+            size_hint_x: 1
+            spacing: 0
+            height: self.minimum_height
+            orientation: 'vertical'
+
+<SelDropDown>:
+    dismiss_on_select: True
+
+    DGButton:
+        size_hint_y: None
+        height: 40
+        background_normal: ""
+        background_color: .4, .4, .4, 1
+        text: app.trs.ui("showselect")
+        on_release: 
+            root.dismiss()
+            root.ppt.lidata_show_selected()
+
+    DGButton:
+        size_hint_y: None
+        height: 40
+        background_normal: ""
+        background_color: .4, .4, .4, 1
+        text: app.trs.ui("hideselect")
+        disabled: True
+        on_release: 
+            root.dismiss()
+            root.ppt.lidata_hide_selected()
+
+    DGButton:
+        size_hint_y: None
+        height: 40
+        background_normal: ""
+        background_color: .4, .4, .4, 1
+        text: app.trs.ui("graph")
+        disabled: True
+
+    CheckLabel:
+        id: logall
+        chk_sel: True
+        chk_lbl: app.trs.ui("logall")
+        chk_grp: "lidata-loggable"
+        size_hint_y: None
+        size_hint_x: 1
+        height: 40
+        on_release: 
+            root.dismiss()
+            self.ids.chk.active = not self.ids.chk.active
+            root.ppt.lidata_log_selected(False)
+
+    CheckLabel:
+        id: logsel
+        chk_lbl: app.trs.ui("logsel")
+        chk_grp: "lidata-loggable"
+        size_hint_y: None
+        size_hint_x: 1
+        height: 40
+        on_release: 
+            root.dismiss()
+            self.ids.chk.active = not self.ids.chk.active
+            root.ppt.lidata_log_selected(True)
+
+
+
+<LiDataRow>:
+    cols: 4
+
+    CheckBox:
+        size_hint_y: None
+        height: 30
+        id: cb_lidata
+        active: False
+        color: 0,0,0,1
+        size_hint_x: 0.1
+        valign: "center"
+
+    DGLabel:
+        size_hint_y: None
+        height: 30
+        padding_x: 10
+        text: root.text_lbl
+        halign: "left"
+        valign: "center"
+        shorten: True
+        text_size: self.width, 30
+
+    DGLabel:
+        size_hint_x: 0.4
+        size_hint_y: None
+        height: 30
+        text: root.text_val
+        valign: "center"
+
+
+<TlcdTabView@TabbedPanelItem>:
+    RecycleView:
+        scroll_type: ['bars'] #, 'content']
+        bar_width: 25
+        id: tlcd_page
+        viewclass: 'TlcdRVRow'
+        RecycleBoxLayout:
+            default_size: None, sp(40)
+            default_size_hint: 1, None
+            size_hint_y: None
+            size_hint_x: 1
+            spacing: 0
+            height: self.minimum_height
+            orientation: 'vertical'
+
+
+<TlcdRVRow>:
+    spacing: 10
+    orientation: "horizontal"
+    size_hint_x: 0.8
+    height: 20
+    size_hint_y: None
+    
+    DGLabel:              
+        size_hint_x: 0.5
+        padding_x: 10
+        size_hint_y: None
+        text: root.text_lbl
+        halign: "left"
+        text_size: self.width, None
+        height: 25
+        shorten: True
+
+    DGButton:
+        text: "?"
+        size_hint_x: None
+        width: 15
+        padding_x: 10
+        size_hint_y: None
+        height: 25
+        halign: "right"
+        on_release: root.callhelp()
+    
+    BoxLayout:
+        id: widges
+        orientation: "horizontal"
+        size_hint_y: None
+        height: 25
+        size_hint_x: 0.5
+
+
+<FaultDetailRow>:
+    cols: 2
+
+    DGLabel:              
+        size_hint_x: 0.3
+        padding_x: 10
+        text: root.fd_lbl
+        halign: "left"
+        size_hint_y: None
+        text_size: self.width, None
+        height: self.texture_size[1]
+    DGLabel:
+        height: 30
+        size_hint_x: 0.7
+        size_hint_y: None
+        text: root.fd_val
+
+<IdentPage@GridLayout>:
+    rows: 2
+
+    GridLayout:
+        id: ident_buttons
+        cols: 4
+        size_hint_y: 0.1
+
+        DGButton:
+            text: app.trs.ui("refresh")
+            on_release: root.ppt.ident_refresh()
+
+        DGButton:
+            text: app.trs.ui("export")
+            on_release: app.askfile(".txt", callback=root.ppt.ident_export_all)
+    
+    ScrollView:
+        id: ident_sv
+        bar_width: sp(30)
+        size: self.size
+
+        GridLayout:
+            id: ident_list
+            cols: 2
+            size_hint_y: None
+            height: self.minimum_height
+
+
+<FaultDefault>:
+    cols: 1
+
+    DGLabel:
+        text: app.trs.ui("nofaults")
+
+    DGButton:
+        text: app.trs.ui("refresh")
+        on_release: root.callback()
+
+<ActDefault@GridLayout>:
+    cols: 1
+
+    DGLabel:
+        text: app.trs.ui("testingempty")
+
+    DGButton:
+        text: app.trs.ui("refresh")
+        on_release: root.callback()
+
+
+<FaultAccord>:
+    rows: 2
+
+    GridLayout:
+        id: fault_buttons
+        cols: 3
+        size_hint_y: 0.1
+
+        DGButton:
+            text: app.trs.ui("refresh")
+            on_release: root.ppt.dtc_refresh()
+
+        DGButton:
+            text: app.trs.ui("export")
+            on_release: app.askfile(".txt", callback=root.ppt.dtc_export_all)
+
+        DGButton:
+            text: app.trs.ui("clearall")
+            on_release: root.ppt.dtc_clear_all()
+
+
+    ScrollView:
+        id: fault_tree
+        bar_width: sp(30)
+        size_hint: 1,1
+
+
+<TreeViewLabel>:
+    on_touch_down: root.parent.toggle_node(self)
+
+<FaultBox>:
+    # each fault
+    cols: 1
+    size_hint_x: 1
+    size_hint_y: None
+    orientation: "tb-lr"
+    height: self.minimum_height
+    row_default_height: sp(30)
+
+    DGLabel:
+        id: faultchar
+        text: app.trs.ui("faultchar")
+        markup: True
+
+    GridLayout:
+        size_hint_x: 1
+        row_force_default: True
+        row_default_height: sp(25)
+        id: fault_chars
+        cols: 2
+        height: self.minimum_height
+        size_hint_y: None
+    
+    DGLabel:
+        id: faultfreeze
+        text: app.trs.ui("freezeframe")
+        markup: True
+
+    GridLayout:
+        size_hint_x: 1
+        row_default_height: sp(25)
+        row_force_default: True
+        id: fault_freeze
+        cols: 2
+        size_hint_y: None
+        height: self.minimum_height
+
+
+# POPUPS ---------------------------------------------
+
+<DataOptions@Popup>:
+    auto_dismiss: True
+    size_hint: (0.4, 0.4)
+    title: "Choose"
+
+    GridLayout:
+        cols: 1
+
+        DGButton:
+            text: "Hide"
+        
+
+
+<AutoPopup@Popup>:
+    auto_dismiss: False
+    size_hint: (0.4, 0.4)
+    title: "Notify"
+
+    GridLayout:
+        rows: 2
+        cols: 1
+
+        DGLabel:
+            id: msg
+            text: "Impossible"
+            width: self.parent.width
+            text_size: self.width,  None
+            color: 1,1,1, 1
+
+        DGButton:
+            size_hint_y: 0.35
+            size_hint_x: 0.7
+            id: btn_ok
+            text: app.trs.ui("close")
+            on_release: root.dismiss()
+
+<YesNoPopup@Popup>:
+    auto_dismiss: False
+    size_hint: (0.4, 0.4)
+    title: "Question"
+
+    GridLayout:
+        rows: 2
+        cols: 1
+
+        DGLabel:
+            id: msg
+            text: app.trs.ui("missing")
+            width: self.parent.width
+            text_size: self.width,  None
+            color: 1,1,1, 1
+
+        GridLayout:
+            size_hint_y: None
+            height: 30
+            rows: 1
+            cols: 2
+
+            DGButton:
+                size_hint_x: 0.35
+                id: btn_yes
+                text: app.trs.ui("yes")
+                on_release: root.dismiss()
+
+            DGButton:  
+                size_hint_x: 0.35
+                id: btn_no
+                text: app.trs.ui("no")
+                on_release: root.dismiss()
+
+<WaitPopup>:
+    auto_dismiss: False
+    size_hint: (0.4, 0.4)
+    title: "Loading"
+
+    GridLayout:
+        cols: 1
+
+        DGLabel:
+            id: msg
+            text: app.trs.ui("dataloading")
+            width: self.parent.width
+            text_size: self.width,  None
+            color: 1,1,1, 1
+        DGLabel:
+            id: stat
+            markup: True
+            text: ""
+            width: self.parent.width
+            text_size: self.width,  None
+            color: 1,1,1, 1
+
+
+<SpinPopup@Popup>:
+    auto_dismiss: False
+    size_hint: (0.4, 0.4)
+    title: "Question"
+
+    GridLayout:
+        rows: 2
+        cols: 1
+
+        DGLabel:
+            id: msg
+            text: app.trs.ui("missing")
+            width: self.parent.width
+            text_size: self.width,  None
+            color: 1,1,1, 1
+
+        DGSpinner:
+            id: utxt
+            size_hint_x: 0.8
+
+        GridLayout:
+            size_hint_y: None
+            height: 30
+            rows: 1
+            cols: 2
+
+            DGButton:
+                size_hint_x: 0.35
+                id: btn_yes
+                text: app.trs.ui("select")
+                on_release: root.dismiss()
+
+            DGButton:  
+                size_hint_x: 0.35
+                id: btn_no
+                text: app.trs.ui("cancel")
+                on_release: root.dismiss()
+
+
+<TextPopup@Popup>:
+    auto_dismiss: False
+    size_hint: (0.4, 0.4)
+    title: "Question"
+
+    GridLayout:
+        rows: 2
+        cols: 1
+
+        DGLabel:
+            id: msg
+            text: app.trs.ui("missing")
+            width: self.parent.width
+            text_size: self.width,  None
+            color: 1,1,1, 1
+
+        TextInput:
+            id: utxt
+            size_hint_x: 0.8
+
+        GridLayout:
+            rows: 1
+            cols: 2
+
+            DGButton:
+                size_hint_y: 0.35
+                size_hint_x: 0.35
+                id: yes
+                text: app.trs.ui("textok")
+                on_release: root.dismiss()
+
+<LogPopup@Popup>:
+    auto_dismiss: True
+    size_hint: (1, 0.3)
+    title: app.trs.ui("logger")
+    pos_hint: { "x": 0, "y" : 0 }
+
+    ScrollView:
+        size: 1,1
+        
+        Label:
+            id: log_txt
+            size_hint: None, None 
+            size: self.texture_size
+
+
+<ActPopup>:
+    auto_dismiss: False
+    size_hint: (0.6, 0.6)
+    title: "Function Test"
+
+    GridLayout:
+        cols: 1
+
+        GridLayout:
+            id: content_frame
+            cols: 2
+            spacing: [10, 10]
+            padding: [10, 10]
+
+            DGLabel:
+                id: user_info_lbl
+                text: app.trs.ui("actinfo")
+                text_size: self.size
+                size_hint_x: 0.3
+                color: 1,1,1,0.8
+
+            DGLabel:
+                id: user_info_val
+                text_size: self.size
+                color: 1,1,1,0.8
+
+            DGLabel:
+                id: user_type_lbl
+                text: app.trs.ui("acttype")
+                text_size: self.size
+                size_hint_x: 0.3
+                color: 1,1,1,0.8
+
+            DGLabel:
+                id: user_type_val
+                text_size: self.size
+                color: 1,1,1,0.8
+
+            DGLabel:
+                id: user_status_lbl
+                text: app.trs.ui("actstatus")
+                text_size: self.size
+                size_hint_x: 0.3
+                color: 1,1,1,0.8
+            
+            DGLabel:
+                id: user_status_val
+                text_size: self.size
+                color: 1,1,1,0.8
+
+        GridLayout:
+            cols: 2
+            size_hint_y: 0.2
+
+            DGButton:
+                id: btn_left
+                on_release: root.callback_left()
+        
+            DGButton:
+                id: btn_right
+                on_release: root.callback_right()
+
+<SaveDialog>:
+    text_input: text_input
+
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            font_name: app.root_font
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        BoxLayout:
+            TextInput:
+                id: text_input
+                size_hint_y: None
+                size_hint_x: 0.8
+                height: 30
+                multiline: False
+                text: root.def_text
+            DGLabelW:
+                size_hint_y: None
+                height: 30
+                multiline: False
+                size_hint_x: 0.3
+                text: root.filext
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            DGButton:
+                text: "Cancel"
+                on_release: root.cancel(root, None, None)
+
+            DGButton:
+                text: app.trs.ui("save")
+                on_release: root.save(root, filechooser.path, text_input.text)
+
+<LoadDialog>:
+    text_input: text_input
+
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            path: root.path
+            font_name: app.root_font
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+
+            TextInput:
+                id: text_input
+                size_hint_x: 0.8
+                multiline: False
+                text: root.def_text
+            DGLabelW:
+                multiline: False
+                size_hint_x: 0.3
+                text: root.filext
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            DGButton:
+                text: "Cancel"
+                on_release: root.cancel(root, None, None)
+
+            DGButton:
+                text: app.trs.ui("loadchoose")
+                on_release: root.save(root, filechooser.path, text_input.text)
+
+
+<FolderDialog>:
+    text_input: text_input
+
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            path: root.path
+            dirselect: True
+            filters: [lambda folder, filename: not filename.endswith('')]
+            font_name: app.root_font
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+
+            TextInput:
+                id: text_input
+                size_hint_x: 0.8
+                multiline: False
+                text: root.def_text
+            DGLabelW:
+                multiline: False
+                size_hint_x: 0.3
+                text: root.filext
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            DGButton:
+                text: "Cancel"
+                on_release: root.cancel(root, None, None)
+
+            DGButton:
+                text: app.trs.ui("loadchoose")
+                on_release: root.save(root, filechooser.path, text_input.text)

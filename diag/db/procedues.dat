@@ -1,0 +1,181 @@
+;PROCEDURE
+:ECUID=
+:ECUVEID=
+:ECUNAME=SUSPENSION_ECOTECH
+:NAME_LNG=Depressurise
+:
+
+x7_suspension_ecotech_depressurise:
+    vehicle: X7
+    ecuname: SUSPENSION_ECOTECH
+    label:
+        en: "Depressurisation"
+        fr: "Horspression"
+    help:
+        en: "Depressurise the suspension circuit for maintenance or in preparation for checking the level"
+    steps:
+        start:
+            label:
+                en: "Initialise the procedure and wait for up to 3 minutes, then disconnect the battery"
+            next_step: in_progress
+
+        in_progress:
+            label:
+                en: "Depressurisation in progress..."
+            category: repeat
+            command:
+                service: [ 16, 01 ]
+                repeat: 1000
+            responses:
+                endok: [ 70, 16, 01 ]
+                endko: [ 70, 16, 00 ]
+
+        endok:
+            label:
+                en: "Depressurisation is complete. Now disconnect the battery"
+            next_step: finish
+
+        endko:
+            label:
+                en: "The operation could not be completed"
+            next_step: finish
+            
+
+
+Start by getting ACTZONES for all ACTTEST applicable to this ECU
+
+Example on data needing to be entered for DEPRESSURISE_SUSPENSIONECOTECH / K LINE
+
+Should flag somewhere that this is (1) custom and (2) a procedure / routine
+
+
+
+INPUTS - example
+================
+PROC_TITLE = Depressurise suspension
+PROC_HELP = Initiate the procedure, and then wait 3 minutes. Once the process is complete, disconnect the battery
+PROC_NOTSTART = Procedure could not be started
+PROC_INPROG = Procedure in progress...
+PROC_ENDOK = Procedure completed successfully
+PROC_ENDKO = Procedure could not be completed
+PROC_NAME = DGP_CSS_DEPRESS
+ECUIDS = 
+ECUVEIDS = 
+SVC_START = 16,20,01
+SVC_GET_STATUS = 16,01
+SVC_ENDOK = 70,16,01
+
+PROC_TITLE = Set heights (CSS)
+PROC_HELP = Follow the procedure outline in the technical manual, and enter the calculated heights when prompted (each value is Rx - Hx * 4) in the order FL, FR, RL, RR
+PROC_INPROG = Setting of heights in progress...
+PROC_ENDKO = ECU refused request, dimensions were probably out of range
+PROC_ENDOK = Height calibration has completed successfully
+PROC_NAME = DGP_CSS_HEIGHTS
+ECUIDS = 
+ECUVEIDS = 
+SVC_START = 31,B3,00,K1FL,K1FR,K1RL,K1RR
+SVC_STARTOK = 71,B3,01
+SVC_GET_STATUS = 31,B3,01
+SVC_ENDOK = 71,B3,02
+SVC_ENDKO = 71,B3,03 / 04
+SVC_INPROG = 71,B3,01
+
+PROC_TITLE = Set showroom mode
+PROC_HELP = Change to showroom mode disables economy mode and allows certain power consuming equipment to continue running
+ECUIDS = 
+ECUVEIDS = 
+SVC_START = 31,AD,00,00,A1,01
+SVC_STARTOK = 71,AD,01
+SVC_GET_STATUS = 31,AD,01
+SVC_ENDKO = 71,AD,04
+
+
+
+Add ACTTEST
+========================
+actid = yy
+title = @X001-DEPRESSURISE
+actname = DGPROC_DEPRESSURISE_0
+acttype = 
+actanim = 
+acthelp = @X002-DEPRESSURISE
+actuserinit = 1
+actuserstop = 
+actrestart = 
+
+Add MAP_ECUACT
+==========================
+ecuid = xx
+actid = yy
+scnid = uu
+ctrlid = zz
+
+Add ACTCTRL
+==============================
+ctrlid = zz
+ctrlname = control_DGPR_DEPRESS_0
+ctrltype = 
+postreqstatus = 
+intertime =
+durationmax =
+reqstatus = 
+reqstatusparname = 
+
+Add ACTZONE
+======================
+azoneid =
+azonerole = 0, 1, 2
+azonename = SRBLID_DGPR_DEPRESS_0
+            SRBLIDAR_DGPR_DEPRESS_0
+            SRBLIDST_DGPR_DEPRESS_0
+
+Add ACTSTATUS
+======================
+actstatname = DGPR_DEPRESS_0_S0
+              DGPR_DEPRESS_0_S1
+              DGPR_DEPRESS_0_S2
+actstatlabel = @X003-DEPRESSSTOPKO
+               @X004-DEPRESSSTOPOK
+               @X005-DEPRESSNOSTART
+               @X006-DEPRESSINPROG
+                ...
+actstattype = 0, 1, 2, 3, 4
+
+Add ACTPARAM
+=======================
+???
+
+
+Add PARAMS
+===============================
+pid, dattype, parname, encode
+bb, 0, SID_TX, ENUM
+bb, 0, LID_DGPR_DEPRESS_0, ENUM
+bb, 0, DG_PARAM1, ENUM
+
+bb, 0, SID_RX, ENUM
+bb, 0, LID_DGPR_DEPRESS_0, ENUM
+
+
+Add FRAPAS
+=============================
+frid pp
+pid, pos, val
+
+START
+bb, 1, 16
+bb, 2, 20
+bb, 3, 01
+
+GET_STATUS
+bb, 1, 16
+bb, 2, 01
+
+ACK_OK
+frid pq
+bb, 1, 70
+bb, 2, 16
+bb, 3, 01
+
+
+

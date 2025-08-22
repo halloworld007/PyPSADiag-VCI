@@ -1,0 +1,80 @@
+Version 1.41
+------------
+
+- Added prompt to write traceability zone after secured telecoding has completed successfully
+- Implemented correct DTC decoding for UDS-protocol (e.g. 555A -> C155A
+- Fix clear DTC not working
+- Fix some crashes when file paths can't be found (thanks sergey)
+- Add experimental mode to show *all* telecoding parameters for an ECU
+- Show parameter names from external translations file if they are not in the database files (thanks morcibacsi)
+
+- Fixed crash in treeview loading DTCs sometimes
+
+
+Version 1.40
+------------
+
+- Added Spanish, Hungarian and German to *database* language options (not app UI yet)
+- Database updated to 9.179
+- Improved handling of fault reading/clearing
+- Fixed some general crashes
+- Implemented lots behind the scenes to support Procedures in future
+
+
+Version 1.33
+------------
+Not released
+
+- Telecoding now only reads back zones which might have been modified, speeding up performance on BSI2010 and similar
+- Telecoding configuration can now be exported to CSV for easier viewing and backup. Import coming in the future :)
+- Multiple ECU keys for once ECU type can now be specified. If the first in sequence doesn't work, the next will be tried, and so on
+- Fixed crashes when trying to use LID-mapped actuator tests on BSI04
+
+
+Version 1.32
+------------
+Released 25-Mar-2023
+
+- Treeview is now available as a binary (EXE)
+- Fixed issue with navigationdrawer not being included in binary
+
+
+
+Version 1.31
+------------
+Released 24-Mar-2023
+
+- K-line support is now available with the VCI
+- K-line support now included in Diagnostique for some ECUs. Notably - SUSPENSION_ECOTECH (X7, X6)
+- Fiat B-CAN support (X250, not X250FL/X290 yet)
+- ECU identification data is now stored in the save file for viewing afterwards
+- Some work to live-data logging, not completely working yet
+
+- Treeview now displays ALL data for BSI2010, not truncated
+- Fixed Treeview bug that meant BSI04 wasn't showing all data
+- Fixed various bugs and crashes
+
+
+Version 1.30
+------------
+Released 21-Mar-2023
+
+- Parameter loading performance improvements, so BSI2010 and similar ECUs work in Diagnostique now
+- Treeview no longer crashes when trying to load ECUs with high parameter count (see notes #1)
+- Treeview has "Export Available Data" button, to generate a text file showing all available Actuator Tests, Live Data and Configuration options (+ states) for a specific ECU (#2)
+- ECU headers loading improved, so there is now basic support for other protocols (FIAT_BCAN). However, this is not implemented in other places yet so Fiat-based systems don't work yet
+- Additional error checking to various functions
+- UDS keys are now included for many common ECUs, so secured telecoding will work for some ECUs now (note, traceability is not implemented yet)
+
+#1 - The data load is now constrained to 80 000 database rows. This means data extraction is incomplete for BSI2010, VSM and other high parameter counts ECUs, but it will also not crash :) These ECUs, due to the way the database is currently managed, have over 1 million rows to a full data-set which is not manageable. This will be fixed in future
+
+#2 - Only Configuration options which Diagnostique can show will be visible. Notably, this does not include parameters which have string or integer values as there is not yet support for these in the underling libraries
+
+
+Version 1.23
+------------
+Initial binary release
+
+- Works natively with arduino-psa-diag sketch as an adapter (thanks Oranz)
+- Cleaned up program structure
+- VCI firmware version is now reported correctly

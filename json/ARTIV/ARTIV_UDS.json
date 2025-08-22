@@ -1,0 +1,129 @@
+{
+  "name": "ARTIV_UDS",
+  "tx_id": "6B6",
+  "rx_id": "696",
+  "protocol": "uds",
+  "key_type": "single",
+  "keys": "EFCA",
+  "coding": true,
+  "errors": true,
+  "include_zone_object": "./data/IdentUDSECU.json",
+  "tabs": {
+    "ident": "Identification",
+    "tele": "Telecoding"
+  },
+  "zones": {
+    "2100": {
+      "id": "Configuration_Group_Data_List",
+      "tab": "tele",
+      "name": "Configuration group data list",
+      "byte": 0,
+      "type": "raw",
+      "form_type": "string"
+    },
+    "2101": {
+      "id": "Gauging_Group_Data_Values",
+      "name": "Gauging group data values",
+      "tab": "tele",
+      "type": "raw",
+      "form_type": "multi",
+      "CFG_E8Y_ARTIV_ENGINE_TYPE_002": {
+        "name": "Type of engine",
+        "byte": 1,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11111111",
+        "params": [
+          {
+            "name": "Diesel",
+            "mask": "11111101"
+          },
+          {
+            "name": "Hybrid",
+            "mask": "11111011"
+          },
+          {
+            "name": "Electric",
+            "mask": "11110111"
+          },
+          {
+            "name": "Petrol",
+            "mask": "11111110"
+          }
+        ]
+      },
+      "CFG_E8Z_ARTIV_RADAR_24G_FREQUENCY_002": {
+        "name": "Starting frequency (Megahertz)",
+        "byte": 2,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11111111",
+        "params": [
+          {
+            "name": "24150",
+            "mask": "11111110"
+          },
+          {
+            "name": "24075",
+            "mask": "11111101"
+          }
+        ]
+      },
+      "CFG_E92_ARTIV_CRUISE_CONTROL_TYPE_002": {
+        "name": "Type of cruise control",
+        "byte": 3,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "11111111",
+        "params": [
+          {
+            "name": "Cruise control ABSENT",
+            "mask": "11111110"
+          },
+          {
+            "name": "Adapted cruise control",
+            "mask": "11111101"
+          },
+          {
+            "name": "Adapted cruise control until the vehicle stops",
+            "mask": "11111011"
+          }
+        ]
+      },
+      "CFG_E90_ARTIV_OPTION_ARC_002": {
+        "name": "Emergency collision braking function",
+        "byte": 4,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00000001",
+        "params": [
+          {
+            "name": "Function ABSENT",
+            "mask": "00000001"
+          },
+          {
+            "name": "Function present",
+            "mask": "00000000"
+          }
+        ]
+      },
+      "CFG_E91_ARTIV_OPTION_FARC_002": {
+        "name": "Presence of the emergency collision braking function",
+        "byte": 4,
+        "type": "bool",
+        "form_type": "combobox",
+        "mask": "00000010",
+        "params": [
+          {
+            "name": "Function ABSENT",
+            "mask": "00000010"
+          },
+          {
+            "name": "Function present",
+            "mask": "00000000"
+          }
+        ]
+      }
+    }
+  }
+}

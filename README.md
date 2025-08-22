@@ -79,19 +79,4 @@ Manual Translations
 For manual translation, you can use the desktop application [QT Linguist](https://github.com/lelegard/qtlinguist-installers/releases).<br>
 Open, for example, the `./i18n/translations/PyPSADiag_translated_nl.qt.ts` file, edit the sentences, and save the result.
 
-Donate
-------
 
-If you like my work then please consider making a donation, to support my effort in
-developing this application.<br>
-Many thanks to all who donated already.<br>
-
-| PayPal |
-|-------|
-|  [![PayPal](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=H9AX9N7HWSWXE&item_name=PSADiag&item_number=PSADiag&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted) |
-
-Contact
--------
-If you like to contact me, you can do so by sending an email to:
-
-    mpostema09 -at- gmail.com
